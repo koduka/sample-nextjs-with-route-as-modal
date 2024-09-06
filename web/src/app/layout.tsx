@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   console.log(geistSans.variable)
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
