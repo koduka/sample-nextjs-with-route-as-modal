@@ -1,3 +1,5 @@
+'use client'
+
 import type { ReactNode } from 'react'
 
 import ReactModal from 'react-modal'
@@ -7,12 +9,12 @@ type Props = {
   children: ReactNode
 }
 
-ReactModal.setAppElement('.modal-wrapper')
+ReactModal.setAppElement('#main')
 
 export function Modal({ isOpen, children }: Props) {
   return (
-    <div className="modal-wrapper">
-      <ReactModal isOpen={isOpen}>{children}</ReactModal>
-    </div>
+    <ReactModal closeTimeoutMS={2000} isOpen={isOpen}>
+      {children}
+    </ReactModal>
   )
 }

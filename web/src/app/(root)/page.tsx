@@ -1,8 +1,8 @@
 'use client'
 
+import { Modal } from '@/libs/components/ui/Modal'
 import type { Test } from '@/libs/data'
 import { tests } from '@/libs/data'
-import { Modal } from '@/libs/ui/components/Modal'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -24,8 +24,11 @@ export default function Home({ searchParams: { id } }: Props) {
   }, [id])
 
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
+    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 sm:p-20">
+      <main
+        id="main"
+        className="row-start-2 flex flex-col items-center gap-8 sm:items-start"
+      >
         <Modal isOpen={isOpen}>
           <div className="flex space-x-2">
             <p className="content-center">{data?.text}</p>
@@ -74,6 +77,20 @@ export default function Home({ searchParams: { id } }: Props) {
                   query: { id: value.id },
                 }}
                 as={`/test02/${value.id}`}
+                className="rounded-lg bg-blue-700 p-2 text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
+              >
+                Open: {value.id}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="space-y-1">
+          <h2>RootLayoutにモーダル</h2>
+          <div className="space-x-2">
+            {tests.map((value) => (
+              <Link
+                key={value.id}
+                href={`/with-layout/${value.id}`}
                 className="rounded-lg bg-blue-700 p-2 text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
               >
                 Open: {value.id}
